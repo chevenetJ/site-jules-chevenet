@@ -1,0 +1,10 @@
+[theme]
+base="light"
+primaryColor="#BBB4DA"
+backgroundColor="#F1E9E7"
+secondaryBackgroundColor="#E8C3B4"
+baseRadius="full"
+
+[theme.sidebar]
+backgroundColor="#E8C3B4"
+secondaryBackgroundColor="#BBB4DA"
