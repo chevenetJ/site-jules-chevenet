@@ -6,7 +6,7 @@ from composants import langue_select
 from core import t
 from core.state import init_langue, init_mail_data, init_sending
 
-global_page_config: dict = {
+global_page_config: dict[str, str | None] = {
     "page_icon": None,
     "layout": "centered",
     "initial_sidebar_state": "auto",
@@ -29,10 +29,10 @@ class CustomPage:
         self,
         name: str,
         subheader: str,
-        page_config: dict = {
+        page_config: dict[str, str] = {
             "page_title": "En construction",
         },
-        page_code: Callable = defaut_page_code,
+        page_code: Callable[[], None] = defaut_page_code,
     ):
         self.name = name
         self.subheader = subheader

@@ -7,9 +7,7 @@ from page_model import CustomPage
 
 
 def home() -> None:
-    with st.container(
-        border=True, horizontal=True, vertical_alignment="center", gap="medium"
-    ):
+    with st.container(border=True, horizontal=True, vertical_alignment="center", gap="medium"):
         ph: Media = Media("photo.jpeg", "I")
         with st.container(horizontal_alignment="center"):
             fichier_afficheur(ph, 250)

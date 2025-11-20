@@ -29,7 +29,7 @@ def t(cle: str) -> str:
         return data[cle]
 
     defaut: dict = load_trad(DEFAUT_CLE_LANGUE)
-    return defaut.get(cle, f"??{cle}??")
+    return str(defaut.get(cle, f"??{cle}??"))
 
 
 def t_date(date: tuple[date | None]) -> str:

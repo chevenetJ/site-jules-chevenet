@@ -6,7 +6,7 @@ from page_model import CustomPage
 from pages import PROJET_PERSO, PROJET_PRO, PROJET_SCO
 
 
-def projet():
+def projet() -> None:
     with st.container(border=True):
         st.write(
             "Voici différents projets que j'ai réalisé, catégorisés en trois partie (personnels, professionels, scolaires) et triés du plus récent au plus ancien."

@@ -1,6 +1,5 @@
 import smtplib
 import time
-from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 import streamlit as st
@@ -9,7 +8,7 @@ from core import t
 from core.state import get_mail_data, reset_mail_data, set_mail_data, switch_sending
 
 
-def mail_form():
+def mail_form() -> None:
     with st.form(
         key="contact_form",
         enter_to_submit=False,
@@ -51,16 +50,10 @@ def mail_form():
                 st.rerun()
 
 
-def generate_mail():
+def generate_mail() -> MIMEText:
     params = get_mail_data()
-    email = MIMEMultipart()
     envoyeur = "jules.chevenetpro@gmail.com"
-
-    full_body = (
-        f"Nom : {params['name']}\n"
-        f"Email : {params['mail']}\n\n"
-        f"Message :\n{params['msg']}\n"
-    )
+    full_body = f"Nom : {params['name']}\n" f"Email : {params['mail']}\n\n" f"Message :\n{params['msg']}\n"
     email = MIMEText(full_body, "plain")
     email["From"] = envoyeur
     receveurs = [envoyeur, params["mail"]] if params["copie"] else [envoyeur]
@@ -69,7 +62,7 @@ def generate_mail():
     return email
 
 
-def send(email):
+def send(email: MIMEText) -> None:
     app_password = st.secrets["GMAIL_PASSWORD"]
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(email["From"], app_password)
@@ -77,7 +70,7 @@ def send(email):
 
 
 @st.dialog("Envoi en cours")
-def sending_mail():
+def sending_mail() -> None:
     with st.spinner("En cours d'envoi", show_time=True):
         try:
             mail = generate_mail()

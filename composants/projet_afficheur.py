@@ -5,13 +5,9 @@ from core import t, t_date
 from objets import Projet
 
 
-def projet_afficheur(projet: Projet):
-    with st.expander(
-        label=f"**{projet.name}** - {t_date(projet.date)}", expanded=False
-    ):
-        with st.container(
-            horizontal=True, horizontal_alignment="center", vertical_alignment="center"
-        ):
+def projet_afficheur(projet: Projet) -> None:
+    with st.expander(label=f"**{projet.name}** - {t_date(projet.date)}", expanded=False):
+        with st.container(horizontal=True, horizontal_alignment="center", vertical_alignment="center"):
             with st.container():
                 st.write(projet.description)
             if projet.link is not None:

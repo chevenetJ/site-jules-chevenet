@@ -1,4 +1,5 @@
 from datetime import date
+from typing import List
 
 import streamlit as st
 
@@ -14,14 +15,14 @@ topics = [
 ]
 
 
-def today_topic():
+def today_topic() -> None:
     with st.container(border=True):
         with st.container(horizontal=True, vertical_alignment="center"):
             st.write("Aujourd'hui :")
             st.button(label="1 - Le marché des calendriers de Noël")
 
 
-def search_topic():
+def search_topic() -> None:
     with st.container(
         border=True,
     ):
@@ -29,7 +30,7 @@ def search_topic():
         st.expander("Plus de filtres")
 
 
-def render_topic(topic):
+def render_topic(topic: dict[str, object]) -> None:
     with st.container(vertical_alignment="center", border=True):
         st.write(f"{topic['date'].day} - {topic['name']}")
         with st.container(horizontal=True):
@@ -37,7 +38,7 @@ def render_topic(topic):
             st.button(label="Accéder", key=f"{str(topic['date'].day)}_go")
 
 
-def render_topics(topics):
+def render_topics(topics: List[dict[str, object]]) -> None:
     with st.container(
         horizontal=True,
     ):
@@ -45,7 +46,7 @@ def render_topics(topics):
             render_topic(topic)
 
 
-def calendrier2025():
+def calendrier2025() -> None:
     st.sidebar.divider()
     st.sidebar.page_link("pages/Calendrier2025.py", label="Accueil Calendrier 2025")
     with st.container(border=True):
